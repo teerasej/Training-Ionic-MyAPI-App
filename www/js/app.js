@@ -6,19 +6,63 @@
 angular.module('starter', ['ionic'])
 
 .run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-      // for form inputs)
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    $ionicPlatform.ready(function() {
+        if (window.cordova && window.cordova.plugins.Keyboard) {
+            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+            // for form inputs)
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 
-      // Don't remove this line unless you know what you are doing. It stops the viewport
-      // from snapping when text inputs are focused. Ionic handles this internally for
-      // a much nicer keyboard experience.
-      cordova.plugins.Keyboard.disableScroll(true);
-    }
-    if(window.StatusBar) {
-      StatusBar.styleDefault();
-    }
-  });
+            // Don't remove this line unless you know what you are doing. It stops the viewport
+            // from snapping when text inputs are focused. Ionic handles this internally for
+            // a much nicer keyboard experience.
+            cordova.plugins.Keyboard.disableScroll(true);
+        }
+        if (window.StatusBar) {
+            StatusBar.styleDefault();
+        }
+    });
 })
+
+.controller('ClientController', ['$scope', '$http', function($scope, $http) {
+
+    $scope.sendGetRequest = function() {
+        var url = "http://localhost:8888/myapi";
+
+        $http.post(url)
+            .success(function(data) {
+                console.log('OK: ' + data.message);
+            })
+            .error(function(error) {
+                console.log('Error');
+            });
+    }
+
+    $scope.sendGetRequestWithAmount = function(amount) {
+        var url = "http://localhost:8888/myapi/news/" + amount;
+
+        $http.get(url)
+            .success(function(data) {
+                console.log('OK: ' + data);
+
+                for (var i = 0; i < data.length; i++) {
+                    console.log('News title: ' + data[i].title);
+                }
+            })
+            .error(function(error) {
+                console.log('Error');
+            });
+    }
+
+    $scope.sendPostRequest = function(keyword) {
+        var url = "http://localhost:8888/myapi/search/";
+
+        $http.post(url, { "keyword": keyword })
+            .success(function(data) {
+                console.log('OK: ' + data.newsKeyword);
+            })
+            .error(function(error) {
+                console.log('Error');
+            });
+    }
+
+}])
