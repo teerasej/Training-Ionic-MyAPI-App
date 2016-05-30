@@ -28,8 +28,6 @@ angular.module('starter', ['ionic'])
     $scope.sendGetRequest = function() {
         var url = "http://localhost:8888/myapi/";
 
-
-
         $http.get(url)
             .success(function(data) {
                 console.log('OK: ' + data.message);
@@ -41,8 +39,6 @@ angular.module('starter', ['ionic'])
 
     $scope.sendGetRequestNews = function() {
         var url = "http://localhost:8888/myapi/news";
-
-
 
         $http.get(url)
             .success(function(data) {
