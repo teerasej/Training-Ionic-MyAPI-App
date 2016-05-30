@@ -58,7 +58,7 @@ angular.module('starter', ['ionic'])
 
         $http.get(url)
             .success(function(data) {
-                console.log('OK: ' + data.newsCount);
+                console.log('OK send amount: ' + data.newsCount);
             })
             .error(function(error) {
                 console.log('Error');
@@ -70,7 +70,7 @@ angular.module('starter', ['ionic'])
 
         $http.post(url, { "keyword": keyword })
             .success(function(data) {
-                console.log('OK: ' + data.searchKeyword);
+                console.log('OK, sent keyword: ' + data.searchKeyword);
             })
             .error(function(error) {
                 console.log('Error');
