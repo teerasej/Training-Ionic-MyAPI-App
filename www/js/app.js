@@ -28,7 +28,7 @@ angular.module('starter', ['ionic'])
     $scope.sendGetRequest = function() {
         var url = "http://localhost:8888/myapi";
 
-        $http.post(url)
+        $http.get(url)
             .success(function(data) {
                 console.log('OK: ' + data.message);
             })
