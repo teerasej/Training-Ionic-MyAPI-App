@@ -19,14 +19,14 @@
 </head>
 
 <body ng-app="starter">
-    <ion-pane>
+    <ion-pane ng-controller="ClientController">
         <ion-header-bar class="bar-stable">
             <h1 class="title">My API App</h1>
         </ion-header-bar>
         <ion-content padding="true">
             <div class="list">
                 <h3>Send GET Request</h3>
-                <button class="button button-block button-positive">
+                <button class="button button-block button-positive" ng-click="sendGetRequest()">
                     Send Request
                 </button>
             </div>
@@ -34,9 +34,9 @@
                 <h3>Send GET Request with count</h3>
                 <label class="item item-input">
                     <span class="input-label">News Count</span>
-                    <input type="text" value="0">
+                    <input type="text" value="0" ng-model="amount">
                 </label>
-                <button class="button button-block button-calm">
+                <button class="button button-block button-calm" ng-click="sendGetRequestWithAmount(amount)">
                     Send Request
                 </button>
             </div>
@@ -44,9 +44,9 @@
                 <h3>POST Request</h3>
                 <label class="item item-input">
                     <span class="input-label">Keyword</span>
-                    <input type="text" placeholder="Keyword here...">
+                    <input type="text" placeholder="Keyword here..." ng-model="keyword">
                 </label>
-                <button class="button button-block button-balanced">
+                <button class="button button-block button-balanced" ng-click="sendPostRequest(keyword)">
                     Send Request
                 </button>
             </div>
