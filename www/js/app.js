@@ -23,10 +23,20 @@ angular.module('starter', ['ionic'])
     });
 })
 
-.controller('ClientController', ['$scope', function($scope) {
+.controller('ClientController', ['$scope', '$http', function($scope, $http) {
 
     $scope.sendGetRequest = function() {
-        
+        var url = "http://localhost:8888/myapi/";
+
+        $http.get(url)
+            .success(function(data){
+                console.log('OK: ' + data);
+                console.dir(data);
+                
+            })
+            .error(function(error){
+                console.error('Error');
+            });
     }
 
     $scope.sendGetRequestNews = function() {
