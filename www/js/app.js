@@ -32,7 +32,6 @@ angular.module('starter', ['ionic'])
             .success(function(data){
                 console.log('OK: ' + data);
                 console.dir(data);
-                
             })
             .error(function(error){
                 console.error('Error');
@@ -40,15 +39,55 @@ angular.module('starter', ['ionic'])
     }
 
     $scope.sendGetRequestNews = function() {
-        
+        var url = "http://localhost:8888/myapi/news";
+
+        $http.get(url)
+            .success(function(data){
+                console.log('OK: ' + data);
+                console.dir(data);
+            })
+            .error(function(error){
+                console.log('Error');
+            })
     }
 
     $scope.sendGetRequestNewsWithAmount = function(amount) {
-       
+       var url = "http://localhost:8888/myapi/news/amount/" + amount;
+
+        $http.get(url)
+            .success(function(data){
+                console.log('OK send amount: ' + data.newsCount);
+                console.dir(data);
+            })
+            .error(function(error){
+                console.log('Error');
+            })
     }
 
     $scope.sendPostRequest = function(keyword) {
-        
+        var url = "http://localhost:8888/myapi/news/search/";
+
+        $http.post(url, 
+                {
+                    "keyword" : keyword
+                }
+            )
+            .success(function(data){
+                console.log("OK sent keyword: " + data.searchKeyword);
+                console.dir(data);
+            })
+            .error(function(error){
+                console.log('Error');
+            })
     }
+
+
+
+
+
+
+
+
+
 
 }])
