@@ -26,15 +26,7 @@ angular.module('starter', ['ionic'])
 .controller('ClientController', ['$scope', '$http', function($scope, $http) {
 
     $scope.sendGetRequest = function() {
-        var url = "http://localhost:8888/myapi/";
-
-        $http.get(url)
-            .success(function(data) {
-                console.log('OK: ' + data);
-            })
-            .error(function(error, status) {
-                console.error(error + ' ' + status);
-            });
+        
     }
 
     $scope.sendGetRequestNews = function() {
